@@ -1,0 +1,5 @@
+target*
+.idea*
+*.txt
+*.tsv
+*.html
