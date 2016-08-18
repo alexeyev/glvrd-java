@@ -1,11 +1,7 @@
 package ru.stachek66.nlp.glvrd.config;
 
-import java.util.concurrent.TimeUnit;
-
-import com.google.common.base.CaseFormat;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -31,7 +27,7 @@ public final class RetrofitConfig {
         builder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
 
         if (DEBUG) {
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            final HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(interceptor);
         }

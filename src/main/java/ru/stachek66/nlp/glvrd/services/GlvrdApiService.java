@@ -1,4 +1,4 @@
-package ru.stachek66.nlp.glvrd.config;
+package ru.stachek66.nlp.glvrd.services;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -10,7 +10,7 @@ import ru.stachek66.nlp.glvrd.config.response.RulesResponse;
 /**
  * Created by aam on 18.08.16.
  */
-public interface GlvrdApiService {
+interface GlvrdApiService {
 
     @FormUrlEncoded
     @Headers(value = {"Referer: https://glvrd.ru/"})

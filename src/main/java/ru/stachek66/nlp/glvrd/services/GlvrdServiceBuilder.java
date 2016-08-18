@@ -1,11 +1,12 @@
-package ru.stachek66.nlp.glvrd.config;
+package ru.stachek66.nlp.glvrd.services;
 
 import retrofit2.Retrofit;
+import ru.stachek66.nlp.glvrd.config.RetrofitConfig;
 
 /**
  * Created by aam on 18.08.16.
  */
-public final class GlvrdServiceBuilder {
+final class GlvrdServiceBuilder {
 
     public static GlvrdApiService getGlvrdApiService() {
         final Retrofit retrofit = RetrofitConfig.createApi();
