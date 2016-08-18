@@ -1,8 +1,11 @@
 package ru.stachek66.nlp.glvrd.config;
 
 import java.util.concurrent.TimeUnit;
+
+import com.google.common.base.CaseFormat;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -15,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  */
 public final class RetrofitConfig {
 
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
 
     private static final int READ_TIMEOUT = 10;
 
@@ -36,7 +39,7 @@ public final class RetrofitConfig {
         return builder.build();
     }
 
-    public static Retrofit create() {
+    public static Retrofit createApi() {
 
         return new Retrofit.Builder()
                 .baseUrl("https://api.glvrd.ru/v0/")
@@ -44,6 +47,17 @@ public final class RetrofitConfig {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addCallAdapterFactory(SynchronousCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    public static Retrofit createMain() {
+
+        return new Retrofit.Builder()
+                .baseUrl("https://glvrd.ru/")
+                .client(createClient())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(SynchronousCallAdapterFactory.create())
+                // пусть возвращает ResponseBody
                 .build();
     }
 

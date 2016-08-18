@@ -7,12 +7,16 @@ import retrofit2.Retrofit;
  */
 public final class GlvrdServiceBuilder {
 
-    public static GlvrdService getGlvrdService() {
-        final Retrofit retrofit = RetrofitConfig.create();
-        return retrofit.create(GlvrdService.class);
+    public static GlvrdApiService getGlvrdApiService() {
+        final Retrofit retrofit = RetrofitConfig.createApi();
+        return retrofit.create(GlvrdApiService.class);
+    }
+
+    public static GlvrdMainService getGlvrdMainService() {
+        final Retrofit retrofit = RetrofitConfig.createMain();
+        return retrofit.create(GlvrdMainService.class);
     }
 
     private GlvrdServiceBuilder() {
-
     }
 }
