@@ -12,4 +12,14 @@ public class RulesResponse {
     @SerializedName("rules")
     private Map<String, Rule> rules;
 
+    public Map<String, Rule> getRules() {
+        return rules;
+    }
+
+    @Override
+    public String toString() {
+        return "RulesResponse{" +
+                "rules=" + rules +
+                '}';
+    }
 }

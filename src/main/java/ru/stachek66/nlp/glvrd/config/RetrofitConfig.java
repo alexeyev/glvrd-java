@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 public final class RetrofitConfig {
 
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     private static final int READ_TIMEOUT = 10;
 

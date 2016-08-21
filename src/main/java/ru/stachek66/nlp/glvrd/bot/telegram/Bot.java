@@ -3,11 +3,9 @@ package ru.stachek66.nlp.glvrd.bot.telegram;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.telegram.telegrambots.TelegramApiException;
-import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.User;
-import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 
 import java.io.IOException;
@@ -33,17 +31,17 @@ public class Bot extends TelegramLongPollingBot {
 
     private Executor executor = Executors.newFixedThreadPool(Constants.THREAD_POOL_SIZE);
 
-    private OnlyController controller;
+    private Controller controller;
 
     public Bot() {
-        controller = new OnlyController(this);
+        controller = new Controller(this);
     }
 
     public void onUpdateReceived(final Update update) {
 
         if (update.hasMessage()) {
 
-            Message message = update.getMessage();
+            final Message message = update.getMessage();
 
             if (message.hasText() || message.hasLocation()) {
                 executor.execute(() -> {
@@ -81,31 +79,13 @@ public class Bot extends TelegramLongPollingBot {
         }
 
         try {
-            final String lastController = session.getLastController();
-
             controller.handleMessage(message, session);
-        } catch (TelegramApiException e) {
+        } catch (final TelegramApiException e) {
             LOGGER.error("Error while handling incoming message: " + e.getMessage(), e);
         } catch (Exception e) {
             LOGGER.error("Unknown err", e);
             throw e;
         }
-    }
-
-    public void showMainMenu(final Message request, final TGSession session) throws TelegramApiException {
-
-//        final SendMessage msg =
-//                messageWithNoKeyboard(request.getChatId().toString(), request.getMessageId(), replyKeyboardMarkup);
-//
-//        if (session.isNew()) {
-//            session.setNew(false);
-//            msg.setText("Привет, либо ты тут в первый раз (но не в последний, надеюсь), "
-//                    + "либо мы _берега попутали_.\n"
-//                    + "Скорей жми на кнопку «Рифмуй».");
-//        } else {
-//            msg.setText("Меню; нажми на кнопку — получишь результат");
-//        }
-//        sendMessage(msg);
     }
 
     public String getBotUsername() {

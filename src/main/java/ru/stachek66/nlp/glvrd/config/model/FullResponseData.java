@@ -25,4 +25,33 @@ public class FullResponseData {
         this.rulesResponse = rulesResponse;
     }
 
+    public List<String> getSplittedText() {
+        return splittedText;
+    }
+
+    public void setSplittedText(List<String> splittedText) {
+        this.splittedText = splittedText;
+    }
+
+    public ChunkRangesResponse getFullRangesResponse() {
+        return fullRangesResponse;
+    }
+
+    public void setFullRangesResponse(ChunkRangesResponse fullRangesResponse) {
+        this.fullRangesResponse = fullRangesResponse;
+    }
+
+    public RulesResponse getRulesResponse() {
+        return rulesResponse;
+    }
+
+    public void setRulesResponse(RulesResponse rulesResponse) {
+        this.rulesResponse = rulesResponse;
+    }
+
+    public String toString() {
+        return "FullResponseData{rangesResponse=["
+                + fullRangesResponse + "], rules=["
+                + rulesResponse + "]}";
+    }
 }

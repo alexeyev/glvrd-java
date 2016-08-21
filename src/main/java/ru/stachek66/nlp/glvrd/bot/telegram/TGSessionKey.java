@@ -5,7 +5,7 @@ import org.telegram.telegrambots.api.objects.User;
 /**
  * Created by Semyon on 30.07.2016.
  */
-public class TGSessionKey {
+class TGSessionKey {
 
     private static final int OFFSET_HEX = 31;
 
@@ -13,7 +13,7 @@ public class TGSessionKey {
 
     private final User user;
 
-    public TGSessionKey(final User user, final Long chatId) {
+    TGSessionKey(final User user, final Long chatId) {
         this.user = user;
         this.chatId = chatId;
     }

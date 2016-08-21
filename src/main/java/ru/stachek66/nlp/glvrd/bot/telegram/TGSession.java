@@ -17,7 +17,7 @@ import java.util.Map;
  * если в групповом, то уже другая
  *
  */
-public class TGSession {
+class TGSession {
 
     private Long chatId;
 
@@ -25,21 +25,11 @@ public class TGSession {
 
     private boolean isNew = true;
 
-    private String lastController = null;
-
     private Map<String, Object> sessionParams = new HashMap<>();
 
-    public TGSession(final Long chatId, final User user) {
+    TGSession(final Long chatId, final User user) {
         this.chatId = chatId;
         this.user = user;
-    }
-
-    public void setLastController(final String lastController) {
-        this.lastController = lastController;
-    }
-
-    public String getLastController() {
-        return lastController;
     }
 
     public Long getChatId() {
