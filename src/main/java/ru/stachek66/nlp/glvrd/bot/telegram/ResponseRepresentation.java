@@ -53,7 +53,7 @@ public final class ResponseRepresentation {
                                 .append("\n");
                     }
                 }
-                res.append("\n\n");
+                res.append("\n");
             }
         }
         return res.append("}").toString();
